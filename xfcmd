@@ -1,0 +1,20 @@
+#!/bin/bash
+# modify exif image data to embed base64 string
+exiftool -rights="ALL OF THE RIGHTS BROOOOOOOO" -CopyrightNotice="bGVldCBtYWx3YXJleiBzdG9yZWQgaGVyZSBmdHcK" /Users/xx/Desktop/image.png
+exiftool -InteropIndex="aaaaaaaaaa" -ProcessingSoftware="aaaaaaaaaa" -DocumentName="aaaaaaaaaa" -ImageDescription="aaaaaaaaaa" -Make="aaaaaaaaaa" -Model="aaaaaaaaaa" -PageName="aaaaaaaaaa" -Software="aaaaaaaaaa" -Artist="aaaaaaaaaa" -HostComputer="aaaaaaaaaa" -TargetPrinter="aaaaaaaaaa" -RelatedImageFileFormat="aaaaaaaaaa" -Copyright="aaaaaaaaaa" -SEMInfo="aaaaaaaaaa" -GeoTiffAsciiParams="aaaaaaaaaa" -SpectralSensitivity="aaaaaaaaaa" -SecurityClassification="aaaaaaaaaa" -ImageHistory="aaaaaaaaaa" -RelatedSoundFile="aaaaaaaaaa" -ImageUniqueID="aaaaaaaaaa" -OwnerName="aaaaaaaaaa" -SerialNumber="aaaaaaaaaa" -LensMake="aaaaaaaaaa" -LensModel="aaaaaaaaaa" -LensSerialNumber="aaaaaaaaaa" -UniqueCameraModel="aaaaaaaaaa" -LocalizedCameraModel="aaaaaaaaaa" -CameraSerialNumber="aaaaaaaaaa" -OriginalRawFileName="aaaaaaaaaa" -CameraCalibrationSig="aaaaaaaaaa" -ProfileCalibrationSig="aaaaaaaaaa" -AsShotProfileName="aaaaaaaaaa" -ProfileName="aaaaaaaaaa" -ProfileCopyright="aaaaaaaaaa" -PreviewApplicationName="aaaaaaaaaa" -PreviewApplicationVersion="aaaaaaaaaa" -PreviewSettingsName="aaaaaaaaaa" -ReelName="aaaaaaaaaa" -CameraLabel="aaaaaaaaaa" -OwnerName="aaaaaaaaaa" -SerialNumber="aaaaaaaaaa" -Lens="aaaaaaaaaa" -RawFile="aaaaaaaaaa" -Converter="aaaaaaaaaa" /Users/xx/Desktop/image.png 
+
+
+
+# export to html: exiftool -h . > example.html
+# add copyright: exiftool -rights="Copyright" -CopyrightNotice="Copyright" "file name.extension"
+# add copyright: exiftool -overwrite_original -rights="©2012 John Doe, all rights reserved" -CopyrightNotice="©2012 John Doe, all rights reserved" "file name.extension"
+# add creator: exiftool -XMP-dc:Creator="Creator" "file name.extension"
+# multi chages: exiftool -overwrite_original -rights="©2012 John Doe, all rights reserved" -CopyrightNotice="©2012 John Doe, all rights reserved" -XMP-dc:Creator="Creator" "file name.extension"
+# creative commons: exiftool -overwrite_original -XMP-dc:Rights="This work is licensed to the public under the Creative Commons Attribution-ShareAlike license http://creativecommons.org/licenses/by-sa/4.0/" -xmp:usageterms="This work is licensed to the public under the Creative Commons Attribution-ShareAlike license http://creativecommons.org/licenses/by-sa/4.0/" "file name.extension"
+# License URL: exiftool -overwrite_original -XMP-cc:license="http://creativecommons.org/licenses/by-sa/4.0/" "file name.extension"
+# Attribution name: exiftool -overwrite_original -XMP-cc:AttributionName="Creator" "file name.extension"
+# Attribution URL: exiftool -overwrite_original -XMP-cc:AttributionURL="Creator URL" "file name.extension"
+# Example combining License URL, attribution name and URL: exiftool -overwrite_original -XMP-cc:license="http://creativecommons.org/licenses/by-sa/4.0/" -XMP-cc:AttributionName="Creator" -XMP-cc:AttributionURL="http://creatorURL.com" "file name.extension"
+# Remove all metadata from a file: exiftool -all= -overwrite_original "file name.extension"
+# Remove all metadata from the current directory: exiftool -all= -overwrite_original .
+# Remove all metadata from all png files in the working directory: exiftool -all= -overwrite_original -ext png .
