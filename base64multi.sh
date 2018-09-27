@@ -1,5 +1,8 @@
 #!/bin/bash
 # encode or decode base64 multiple times
+# usage:
+# bash base64multi.sh encode 3 -i ~/Desktop/file.txt -o ~/Desktop/file2.txt
+# bash base64multi.sh decode 3 -i ~/Desktop/file.txt -o ~/Desktop/file2.txt
 case $1 in 
     encode )
         if [[ ${3} == "-i" ]]; then
