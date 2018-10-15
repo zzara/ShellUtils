@@ -18,5 +18,11 @@ def request_maker(url,file):
         file_out.write(str(element.text))
         file_out.close()
     soup.decompose()
+    file_out = open('output_html.txt', 'r')
+    for line in file_out:
+        if len(line) > 10:
+            final_out = open('final_out.txt', 'a')
+            final_out.write(str(line))
+            final_out.close()
 
 request_maker('https://docs.python.org/3/library/urllib.request.html#urllib.request.Request.add_header','output.txt')
