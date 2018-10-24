@@ -1,0 +1,40 @@
+<html>
+<head>
+    
+<style>
+    #botMessage0{font-size:80px;text-align:center;margin-top:300px;}
+</style>
+
+</head>
+<body>
+
+<p id="botMessage0">Welcome!</p>
+
+<script>
+var messg = ['AAAA', 'BBBB', 'CCCC', 'DDDD', 'EEEE', 'FFFF'];
+var i = 0;
+var msgLen = messg.length;
+
+function looper () {           //  create a loop function
+  document.getElementById("botMessage0").innerHTML = messg[i];
+    setTimeout(function () {    //  call a setTimeout when the loop is called
+      i++;                     //  increment the counter
+      if (i == msgLen) {
+        i = 0;
+      }
+        if (i < msgLen) {          //  if the counter < messg.length, call the loop function
+          looper();              //  ..  again which will trigger another 
+        }                    
+   }, 1000);                    //  ..  setTimeout()
+}
+
+looper();
+
+</script>
+
+
+
+</body>
+
+
+</html>
