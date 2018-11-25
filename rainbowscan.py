@@ -1,5 +1,5 @@
 #!/bin/env python3
-# synscan
+# rainbowscan
 # v0.01a
 
 import argparse
@@ -38,7 +38,7 @@ for port in range(1,level):
         # icmp scan
         network_layer = IP(dst=args.host)
         sr(network_layer/ICMP(), retry=0, timeout=0.001, verbose=False)
-        print('syn packet sent to port {}'.format(port))
+        print('icmp packet sent to host: counter {}'.format(port))
 
     if args.syn:
         # synscan
@@ -52,13 +52,13 @@ for port in range(1,level):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.settimeout(.01)
         sock.sendto(bytes('rainbows', "utf-8"), (args.host, port))
-        print('sending to port {}'.format(port))
+        print('udp packet sent to port {}'.format(port))
 
     if args.tcp:
         # tcp scan
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(.01)
         result = sock.connect_ex((args.host, port))
-        print('connecting to port {}'.format(port))
+        print('tcp connection sent to port {}'.format(port))
         sock.shutdown(socket.SHUT_RDWR)
         sock.close()
