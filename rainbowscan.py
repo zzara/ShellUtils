@@ -53,8 +53,6 @@ for port in range(1,level):
         sock.settimeout(.01)
         sock.sendto(bytes('rainbows', "utf-8"), (args.host, port))
         print('sending to port {}'.format(port))
-        sock.shutdown(socket.SHUT_RDWR)
-        sock.close()
 
     if args.tcp:
         # tcp scan
