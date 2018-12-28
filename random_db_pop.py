@@ -6,19 +6,7 @@ import sqlite3
 from sqlite3 import Error
 conn = sqlite3.connect('rand_db_pop.db')
 c = conn.cursor()
-
-#db creation
-'''
-def create_connection(db_file):
-    """ create a database connection to a SQLite database """
-    try:
-        conn = sqlite3.connect(db_file)
-        print(sqlite3.version)
-    except Error as e:
-        print(e)
-    finally:
-        conn.close()
-'''
+c.execute('''CREATE TABLE stocks (id text, date text, trans text, symbol text, qty real, price real)''')
 
 def insert_row(db_row_data):
     try:
