@@ -1,0 +1,68 @@
+from math import sqrt, log
+
+class Person:
+    """Attributes of a person and variaous power calculation methods"""
+
+    def __init__(self, weight, mile_run, push_up, pull_up, sit_up, squat, handstand_push_up, gravity=1):
+        self.weight = float(weight * 0.453592) * float(gravity)
+        self.mile_run = float(mile_run) * 60
+        self.push_up = float(push_up)
+        self.pull_up = float(pull_up)
+        self.sit_up = float(sit_up)
+        self.squat = float(squat)
+        self.handstand_push_up = float(handstand_push_up)
+
+        self.power_level = float()
+        self.joules = float()
+        self.calculate_energy_production()
+        self.calculate_power_level()
+
+    def onerepmax(self, reps, body=1):
+        """Calculate one rep max weight"""
+        return float((self.weight * body) * (1 + (reps/30)))
+
+    @staticmethod
+    def vertical_work(kilograms, distance):
+        """Measure work in Joules: (50kg)(9.81m/s2)(0.5m)"""
+        return kilograms * 9.81 * distance
+
+    def kenetic_energy(self, distance, time):
+        """Calculate knetic energy output"""
+        return 0.5 * self.weight * ((distance / (time)) ** 2)
+
+    def calculate_energy_production(self):
+        # Add 1RM Push Up Joules
+        self.joules += float(self.vertical_work(self.onerepmax(.64, self.push_up), 0.5))
+        self.joules += self.vertical_work(self.weight * .64, 0.5) * self.push_up
+        # Add 1RM Pull Up Joules
+        self.joules += float(self.vertical_work(self.onerepmax(.95, self.pull_up), 0.5))
+        self.joules += self.vertical_work(self.weight * .95, 0.5) * self.pull_up
+        # Add 1RM Sit Up Joules
+        self.joules += float(self.vertical_work(self.onerepmax(.64, self.sit_up), 0.5))
+        self.joules += self.vertical_work(self.weight * .64, 0.5) * self.sit_up
+        # Add 1RM Squat Joules
+        self.joules += float(self.vertical_work(self.onerepmax(self.squat), 0.5))
+        self.joules += self.vertical_work(self.weight, 0.5) * self.squat
+        # Add 1RM Handstand Push Up Joules
+        self.joules += float(self.vertical_work(self.onerepmax(self.handstand_push_up), 0.5))
+        self.joules += self.vertical_work(self.weight, 0.5) * self.handstand_push_up
+        # Add Mile Run
+        self.joules += self.joules * float(self.kenetic_energy(1609.34, self.mile_run))
+        return
+
+    def calculate_power_level(self):
+        mjoules = self.joules / 1000000
+        self.power_level = round(sqrt(sqrt(mjoules)) * log(mjoules), 1)
+        return 
+
+if __name__ == "__main__":
+
+    print("example", Person(
+        weight=150,
+        mile_run=12,
+        push_up=20,
+        pull_up=5,
+        sit_up=20,
+        squat=30,
+        handstand_push_up=0,
+    ).power_level)
