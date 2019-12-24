@@ -1,7 +1,7 @@
 from math import sqrt, log
 
 class Person:
-    """Attributes of a person and variaous power calculation methods"""
+    """Attributes of a person and various power calculation methods"""
 
     def __init__(self, weight, mile_run, push_up, pull_up, sit_up, squat, handstand_push_up, gravity=1):
         self.weight = float(weight * 0.453592) * float(gravity)
@@ -56,18 +56,19 @@ class Person:
 
     def calculate_power_level(self):
         power = self.power_joules
-        power = (power / 1000000) * sqrt(power)
+        power = ((((sqrt(power)**sqrt(log(power))) / (power / 1000000)) / (sqrt(power) * sqrt(power))) / 10000) * 1.61766
+        
         self.power_level = round(power, 1)
         return 
 
 if __name__ == "__main__":
 
-    print("average human", Person(
-        weight=160,
-        mile_run=12,
-        push_up=15,
-        pull_up=3,
-        sit_up=25,
-        squat=30,
+    print("person", Person(
+        weight=180,
+        mile_run=10,
+        push_up=25,
+        pull_up=7,
+        sit_up=30,
+        squat=40,
         handstand_push_up=0
     ).power_level)
