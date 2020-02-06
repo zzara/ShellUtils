@@ -1,7 +1,7 @@
 #!/bin/bash
 # wildfire hash checker
 
-# paypal api key
+# api key
 wildfireApiKey="<api_key>"
 
 # hash array
